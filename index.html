@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Date ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:Georgia,serif;
+background:#f8f8f6;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:#333;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+text-align:center;
+max-width:400px;
+width:90%;
+}
+
+button{
+margin-top:25px;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:50px;
+background:#b08d57;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+opacity:.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="page">
+
+<h2>There's something I've been wanting to ask you...</h2>
+
+<button onclick="nextPage()">
+Continue ❤️
+</button>
+
+</div>
+
+<script>
+
+function nextPage(){
+
+document.getElementById("page").innerHTML=`
+
+<h2>Will you go on a date with me?</h2>
+
+<button onclick="alert('Yay! ❤️')">
+
+Yes ❤️
+
+</button>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>

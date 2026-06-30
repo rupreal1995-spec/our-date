@@ -1,136 +1,183 @@
-/* Premium Style.css - Part 1 */
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{
-height:100%;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#f8f6ef,#efe6d2);
-overflow:hidden;
+/* Premium Style.css - Corrected Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-display:flex;
-align-items:center;
-justify-content:center;
-color:#2d2d2d;
+
+html, body {
+  width: 100%;
+  height: 100vh; /* Forces the body to take exact height of the screen */
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f8f6ef, #efe6d2);
+  overflow: hidden; /* Prevents scrolling so it stays horizontal/full-page */
 }
-#loader{
-position:fixed;
-inset:0;
-background:#faf8f2;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-z-index:9999;
-transition:opacity .8s;
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2d2d2d;
 }
-.loader-heart{
-font-size:60px;
-animation:beat 1s infinite;
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #faf8f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity .8s;
 }
-@keyframes beat{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.2)}
+
+.loader-heart {
+  font-size: 60px;
+  animation: beat 1s infinite;
 }
-.wrapper{
-width:100%;
-height:100%;
-position:relative;
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
-.page{
-position:absolute;
-inset:0;
-display:none;
-align-items:center;
-justify-content:center;
-padding:24px;
-animation:fade .8s ease;
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
-.page.active{display:flex}
-@keyframes fade{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
+
+/* This keeps all pages stacked on top of each other, hiding the inactive ones */
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fade .8s ease;
 }
-.glass,.finalCard{
-width:min(92%,700px);
-padding:40px;
-border-radius:28px;
-background:rgba(255,255,255,.68);
-backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
-box-shadow:0 15px 45px rgba(0,0,0,.12);
-text-align:center;
+
+.page.active {
+  display: flex; /* Only the active page is shown */
 }
-h1{
-font-family:'Cormorant Garamond',serif;
-font-size:3rem;
-line-height:1.2;
-margin-bottom:20px;
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-h2{
-font-family:'Cormorant Garamond',serif;
-font-size:2.2rem;
-margin-bottom:18px;
+
+.glass, .finalCard {
+  width: min(92%, 700px);
+  padding: 40px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+  text-align: center;
 }
-p,.smallText{
-font-size:1.05rem;
-line-height:1.7;
-color:#555;
-margin-bottom:24px;
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
-.gold-btn,.music-button{
-background:linear-gradient(135deg,#b9933f,#e8d18a);
-border:none;
-border-radius:999px;
-padding:15px 34px;
-font-size:1rem;
-font-weight:600;
-color:#fff;
-cursor:pointer;
-transition:.35s;
-box-shadow:0 10px 25px rgba(185,147,63,.35);
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  margin-bottom: 18px;
 }
-.gold-btn:hover,.music-button:hover{
-transform:translateY(-2px) scale(1.03);
+
+p, .smallText {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 24px;
 }
-.music-button{
-position:fixed;
-top:20px;
-right:20px;
-z-index:99;
-padding:14px 18px;
+
+.gold-btn, .music-button {
+  background: linear-gradient(135deg, #b9933f, #e8d18a);
+  border: none;
+  border-radius: 999px;
+  padding: 15px 34px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.35s;
+  box-shadow: 0 10px 25px rgba(185, 147, 63, 0.35);
 }
-input[type=date]{
-padding:14px;
-font-size:18px;
-border-radius:12px;
-border:1px solid #ddd;
-margin:20px 0;
-width:100%;
-max-width:320px;
+
+.gold-btn:hover, .music-button:hover {
+  transform: translateY(-2px) scale(1.03);
 }
-.collage-page{
-background:url("collage.png.png") center/cover no-repeat fixed;
+
+.music-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99;
+  padding: 14px 18px;
 }
-.overlay{
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.48);
-display:flex;
-justify-content:center;
-align-items:center;
-padding:24px;
+
+input[type=date] {
+  padding: 14px;
+  font-size: 18px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 320px;
 }
-.collage-page h1,.collage-page h2,.collage-page p,#countdown{
-color:#fff;
+
+/* Fixed the double .png typo here */
+.collage-page {
+  background: url("collage.png") center/cover no-repeat fixed;
 }
-#hearts,#sparkles{
-position:fixed;
-inset:0;
-pointer-events:none;
-overflow:hidden;
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.48);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
 }
-@media(max-width:600px){
-h1{font-size:2.2rem}
-h2{font-size:1.8rem}
-.glass,.finalCard{padding:28px}
+
+.collage-page h1, .collage-page h2, .collage-page p, #countdown {
+  color: #fff;
+}
+
+#hearts, #sparkles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 50;
+}
+
+canvas#confettiCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+@media(max-width: 600px) {
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+  .glass, .finalCard { padding: 28px; }
 }

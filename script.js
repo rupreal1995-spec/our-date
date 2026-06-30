@@ -44,18 +44,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (targetPage) targetPage.classList.add("active");
   }
 
-  function hideLoader() {
-    if (!loader) return;
-    loader.style.transition = "opacity .8s ease";
-    loader.style.opacity = "0";
-    setTimeout(() => {
-      loader.style.display = "none";
-    }, 800);
-  }
+  // REPLACE THIS SECTION IN YOUR SCRIPT.JS
+function hideLoader() {
+    const loader = document.getElementById("loader");
+    if (loader) {
+        loader.style.transition = "opacity .8s ease";
+        loader.style.opacity = "0";
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 800);
+    }
+}
 
-  window.addEventListener("load", () => {
-    setTimeout(hideLoader, 1800);
-  });
+// Force the loader to hide after 2 seconds, no matter what
+window.addEventListener("load", () => {
+    setTimeout(hideLoader, 2000);
+});
+
 
   const QUESTION = "Will you go on a date with me when you'll be in India?";
 

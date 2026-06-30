@@ -1,69 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Our Date ❤️</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="style.css">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Our Date ❤️</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="style.css">
+
 </head>
 
 <body>
 
-<div id="hearts"></div>
+<!-- Loading Screen -->
 
-<div class="container">
+<div id="loader">
 
-<section id="page1" class="page active">
+<div class="loader-heart">
 
-<h1>There's something I've been wanting to ask you...</h1>
+❤️
 
-<p class="subtitle">
-Every beautiful story starts with one simple question.
-</p>
-
-<button id="continueBtn">
-Continue ❤️
-</button>
-
-</section>
-
-<section id="page2" class="page">
-
-<h1 id="proposalText"></h1>
-
-<button id="yesBtn">
-Yes ❤️
-</button>
-
-</section>
-
-<section id="page3" class="page">
-
-<h2>
-Choose the day that feels perfect for us ❤️
-</h2>
-
-<input type="date" id="datePicker">
-
-<button id="calendarBtn">
-Add to Google Calendar
-</button>
-
-</section>
-
-<section id="page4" class="page collage-page">
-
-<div class="overlay">
-
-<h1>Thank you for saying Yes ❤️</h1>
+</div>
 
 <p>
 
-I can't wait to make beautiful memories with you.
+Preparing something special...
+
+</p>
+
+</div>
+
+<!-- Floating Hearts -->
+
+<div id="hearts"></div>
+
+<!-- Sparkles -->
+
+<div id="sparkles"></div>
+
+<!-- Background Music -->
+
+<audio
+id="bgMusic"
+loop>
+
+<source
+src="music.mp3"
+type="audio/mpeg">
+
+</audio>
+
+<!-- Music Button -->
+
+<button
+id="musicBtn"
+class="music-button">
+
+♫
+
+</button>
+
+<!-- Main Wrapper -->
+
+<div class="wrapper">
+
+<!-- PAGE 1 -->
+
+<section
+class="page active"
+id="page1">
+
+<div class="glass">
+
+<h1>
+
+There's something
+I've been wanting
+to ask you...
+
+</h1>
+
+<p>
+
+Every beautiful story
+starts with one simple
+question.
+
+</p>
+
+<button
+id="continueBtn"
+class="gold-btn">
+
+Continue ❤️
+
+</button>
+
+</div>
+
+</section>
+
+<!-- PAGE 2 -->
+
+<section
+class="page"
+id="page2">
+
+<div class="glass">
+
+<h1
+id="typewriter">
+
+</h1>
+
+<p
+class="smallText">
+
+Take your time...
+
+</p>
+
+<button
+id="yesBtn"
+class="gold-btn">
+
+Yes ❤️
+
+</button>
+
+</div>
+
+</section>
+
+<!-- PAGE 3 -->
+
+<section
+class="page"
+id="page3">
+
+<div class="glass">
+
+<h2>
+
+Choose the day
+that feels perfect
+for us ❤️
+
+</h2>
+
+<input
+type="date"
+id="datePicker">
+
+<button
+id="calendarBtn"
+class="gold-btn">
+
+Add To My Google Calendar
+
+</button>
+
+</div>
+
+</section>
+
+<!-- PAGE 4 -->
+
+<section
+class="page collage-page"
+id="page4">
+
+<div class="overlay">
+
+<div class="finalCard">
+
+<h1>
+
+Thank you
+for saying
+Yes ❤️
+
+</h1>
+
+<p>
+
+I can't wait
+to make beautiful
+memories with you.
 
 </p>
 
@@ -73,7 +212,12 @@ Love you forever ❤️
 
 </h2>
 
-<div id="countdown"></div>
+<div
+id="countdown">
+
+</div>
+
+</div>
 
 </div>
 
@@ -81,9 +225,18 @@ Love you forever ❤️
 
 </div>
 
-<canvas id="confetti"></canvas>
+<!-- Confetti -->
 
-<script src="script.js"></script>
+<canvas
+id="confettiCanvas">
+
+</canvas>
+
+<script
+src="script.js">
+
+</script>
 
 </body>
+
 </html>

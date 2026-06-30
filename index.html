@@ -1,80 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Date ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body{
-margin:0;
-font-family:Georgia,serif;
-background:#f8f8f6;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-color:#333;
-}
+    <title>Our Date ❤️</title>
 
-.card{
-background:white;
-padding:40px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-text-align:center;
-max-width:400px;
-width:90%;
-}
+    <link rel="stylesheet" href="style.css">
 
-button{
-margin-top:25px;
-padding:15px 35px;
-font-size:18px;
-border:none;
-border-radius:50px;
-background:#b08d57;
-color:white;
-cursor:pointer;
-}
-
-button:hover{
-opacity:.9;
-}
-</style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="card" id="page">
+<div id="hearts"></div>
 
-<h2>There's something I've been wanting to ask you...</h2>
+<div class="container">
 
-<button onclick="nextPage()">
+<section id="page1" class="page active">
+
+<h1>There's something I've been wanting to ask you...</h1>
+
+<p class="subtitle">
+Every beautiful story starts with one simple question.
+</p>
+
+<button id="continueBtn">
 Continue ❤️
 </button>
 
-</div>
+</section>
 
-<script>
+<section id="page2" class="page">
 
-function nextPage(){
+<h1 id="proposalText"></h1>
 
-document.getElementById("page").innerHTML=`
-
-<h2>Will you go on a date with me?</h2>
-
-<button onclick="alert('Yay! ❤️')">
-
+<button id="yesBtn">
 Yes ❤️
-
 </button>
 
-`;
+</section>
 
-}
+<section id="page3" class="page">
 
-</script>
+<h2>
+Choose the day that feels perfect for us ❤️
+</h2>
+
+<input type="date" id="datePicker">
+
+<button id="calendarBtn">
+Add to Google Calendar
+</button>
+
+</section>
+
+<section id="page4" class="page collage-page">
+
+<div class="overlay">
+
+<h1>Thank you for saying Yes ❤️</h1>
+
+<p>
+
+I can't wait to make beautiful memories with you.
+
+</p>
+
+<h2>
+
+Love you forever ❤️
+
+</h2>
+
+<div id="countdown"></div>
+
+</div>
+
+</section>
+
+</div>
+
+<canvas id="confetti"></canvas>
+
+<script src="script.js"></script>
 
 </body>
 </html>

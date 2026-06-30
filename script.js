@@ -81,31 +81,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // ================= //
   function toggleMusic() {
     if (music.paused) {
-        music.volume = 0;
-        music.play();
-        musicEnabled = true;
-        musicBtn.textContent = "♫"; // Change icon to show it's playing
-
-        let fade = setInterval(() => {
-            if (music.volume < 0.95) {
-                music.volume += 0.05;
-            } else {
-                clearInterval(fade);
-            }
-        }, 100);
+        music.play().then(() => {
+            music.volume = 1;
+            musicEnabled = true;
+            musicBtn.textContent = "🔊"; // Shows sound is on
+        }).catch(error => {
+            console.log("Autoplay prevented:", error);
+        });
     } else {
-        // Fade out before pausing
-        let fade = setInterval(() => {
-            if (music.volume > 0.1) {
-                music.volume -= 0.1;
-            } else {
-                clearInterval(fade);
-                music.pause();
-                musicEnabled = false;
-                musicBtn.textContent = "♫"; // Keep the icon, or change to "▶" if you prefer
-            }
-        }, 100);
+        music.pause();
+        musicEnabled = false;
+        musicBtn.textContent = "♫"; // Shows sound is off
     }
+}
+
 }
 
   // ================= //

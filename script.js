@@ -80,20 +80,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // MUSIC CONTROLLER  //
   // ================= //
   function toggleMusic() {
+    // If the music is currently paused, we want to start it
     if (music.paused) {
-        music.play().then(() => {
-            music.volume = 1;
-            musicEnabled = true;
-            musicBtn.textContent = "🔊"; // Shows sound is on
-        }).catch(error => {
-            console.log("Autoplay prevented:", error);
-        });
-    } else {
+        music.play().catch(e => console.log("Play failed:", e));
+        music.volume = 1;
+        musicBtn.textContent = "🔊"; // Button shows sound is on
+        musicEnabled = true;
+    } 
+    // If it is playing, we want to force it to stop
+    else {
         music.pause();
+        music.currentTime = 0; // Resets the song to the beginning
+        music.volume = 0;      // Force silence
+        musicBtn.textContent = "♫"; // Button shows sound is off
         musicEnabled = false;
-        musicBtn.textContent = "♫"; // Shows sound is off
     }
 }
+
+  
 
 
   // ================= //

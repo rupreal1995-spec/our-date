@@ -44,23 +44,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (targetPage) targetPage.classList.add("active");
   }
 
-  // REPLACE THIS SECTION IN YOUR SCRIPT.JS
-function hideLoader() {
-    const loader = document.getElementById("loader");
-    if (loader) {
-        loader.style.transition = "opacity .8s ease";
-        loader.style.opacity = "0";
-        setTimeout(() => {
-            loader.style.display = "none";
-        }, 800);
-    }
-}
+  function hideLoader() {
+    if (!loader) return;
+    loader.style.transition = "opacity .8s ease";
+    loader.style.opacity = "0";
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 800);
+  }
 
-// Force the loader to hide after 2 seconds, no matter what
-window.addEventListener("load", () => {
-    setTimeout(hideLoader, 2000);
-});
-
+  window.addEventListener("load", () => {
+    setTimeout(hideLoader, 1800);
+  });
 
   const QUESTION = "Will you go on a date with me when you'll be in India?";
 
@@ -85,22 +80,41 @@ window.addEventListener("load", () => {
   // MUSIC CONTROLLER  //
   // ================= //
   function toggleMusic() {
+    if (!music || !musicBtn) return;
+    
     if (music.paused) {
-        music.play().then(() => {
-            music.volume = 1;
-            musicEnabled = true;
-            musicBtn.textContent = "🔊"; // Shows sound is on
-        }).catch(error => {
-            console.log("Autoplay prevented:", error);
-        });
+      music.volume = 0;
+      music.play().catch(() => {}); // Catch autoplay restrictions
+      
+      let fade = setInterval(() => {
+        if (music.volume < 0.95) {
+          music.volume += 0.05;
+        } else {
+          clearInterval(fade);
+        }
+      }, 100);
+      
+      musicBtn.textContent = "🔊"; 
+      musicEnabled = true;
     } else {
-        music.pause();
-        musicEnabled = false;
-        musicBtn.textContent = "♫"; // Shows sound is off
+      let fade = setInterval(() => {
+        if (music.volume > 0.05) {
+          music.volume -= 0.05;
+        } else {
+          clearInterval(fade);
+          music.pause();
+          music.volume = 1;
+        }
+      }, 100);
+      
+      musicBtn.textContent = "♫";
+      musicEnabled = false;
     }
-}
-
-}
+  }
+  
+  if (musicBtn) {
+    musicBtn.addEventListener("click", toggleMusic);
+  }
 
   // ================= //
   // HEART PARTICLES   //

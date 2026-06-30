@@ -80,41 +80,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // MUSIC CONTROLLER  //
   // ================= //
   function toggleMusic() {
-    if (!music || !musicBtn) return;
-    
     if (music.paused) {
-      music.volume = 0;
-      music.play().catch(() => {}); // Catch autoplay restrictions
-      
-      let fade = setInterval(() => {
-        if (music.volume < 0.95) {
-          music.volume += 0.05;
-        } else {
-          clearInterval(fade);
-        }
-      }, 100);
-      
-      musicBtn.textContent = "🔊"; 
-      musicEnabled = true;
+        music.play().then(() => {
+            music.volume = 1;
+            musicEnabled = true;
+            musicBtn.textContent = "🔊"; // Shows sound is on
+        }).catch(error => {
+            console.log("Autoplay prevented:", error);
+        });
     } else {
-      let fade = setInterval(() => {
-        if (music.volume > 0.05) {
-          music.volume -= 0.05;
-        } else {
-          clearInterval(fade);
-          music.pause();
-          music.volume = 1;
-        }
-      }, 100);
-      
-      musicBtn.textContent = "♫";
-      musicEnabled = false;
+        music.pause();
+        musicEnabled = false;
+        musicBtn.textContent = "♫"; // Shows sound is off
     }
-  }
-  
-  if (musicBtn) {
-    musicBtn.addEventListener("click", toggleMusic);
-  }
+}
+
 
   // ================= //
   // HEART PARTICLES   //

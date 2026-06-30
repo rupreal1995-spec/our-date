@@ -80,41 +80,33 @@ document.addEventListener("DOMContentLoaded", () => {
   // MUSIC CONTROLLER  //
   // ================= //
   function toggleMusic() {
-    if (!music || !musicBtn) return;
-    
     if (music.paused) {
-      music.volume = 0;
-      music.play().catch(() => {}); // Catch autoplay restrictions
-      
-      let fade = setInterval(() => {
-        if (music.volume < 0.95) {
-          music.volume += 0.05;
-        } else {
-          clearInterval(fade);
-        }
-      }, 100);
-      
-      musicBtn.textContent = "🔊"; 
-      musicEnabled = true;
+        music.volume = 0;
+        music.play();
+        musicEnabled = true;
+        musicBtn.textContent = "♫"; // Change icon to show it's playing
+
+        let fade = setInterval(() => {
+            if (music.volume < 0.95) {
+                music.volume += 0.05;
+            } else {
+                clearInterval(fade);
+            }
+        }, 100);
     } else {
-      let fade = setInterval(() => {
-        if (music.volume > 0.05) {
-          music.volume -= 0.05;
-        } else {
-          clearInterval(fade);
-          music.pause();
-          music.volume = 1;
-        }
-      }, 100);
-      
-      musicBtn.textContent = "♫";
-      musicEnabled = false;
+        // Fade out before pausing
+        let fade = setInterval(() => {
+            if (music.volume > 0.1) {
+                music.volume -= 0.1;
+            } else {
+                clearInterval(fade);
+                music.pause();
+                musicEnabled = false;
+                musicBtn.textContent = "♫"; // Keep the icon, or change to "▶" if you prefer
+            }
+        }, 100);
     }
-  }
-  
-  if (musicBtn) {
-    musicBtn.addEventListener("click", toggleMusic);
-  }
+}
 
   // ================= //
   // HEART PARTICLES   //

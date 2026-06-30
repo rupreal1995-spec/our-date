@@ -140,7 +140,7 @@ input[type=date] {
 
 /* Fixed the double .png typo here */
 .collage-page {
-  background: url("collage.png") center/cover no-repeat fixed;
+  background: url("collage.png") center/contain no-repeat fixed;
 }
 
 .overlay {
